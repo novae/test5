@@ -8,14 +8,20 @@ angular.module('ionicApp', ['ionic'])
       templateUrl: "sign-in.html",
       controller: 'SignInCtrl'
     })
-    .state('forgotpassword', {
+    .state('registrarse', {
+      url: "/registrarse",
+      templateUrl: "registrarse.html",
+      controller: 'registrarseCtrl'
+    })
+    .state('forgot-password', {
       url: "/forgot-password",
       templateUrl: "forgot-password.html"
     })
     .state('tabs', {
       url: "/tab",
       abstract: true,
-      templateUrl: "tabs.html"
+      templateUrl: "tabs.html",
+      controller:'tabsController'
     })
     .state('tabs.home', {
       url: "/home",
@@ -74,21 +80,47 @@ angular.module('ionicApp', ['ionic'])
 
 .controller('SignInCtrl', function($scope, $state,$http) {
   
+  // lineas para autologeo
+  
+  var nombre = window.localStorage.getItem('nombre');
+  var pass = window.localStorage.getItem('pass');
+  if(nombre != null && pass != null){
+    $http.post('http://192.168.1.68:3000/login',{nombre:nombre,pass:pass})
+    .success(function(data) {
+      $scope.logeado = data;
+        console.log("se logeo?: "+JSON.stringify($scope.logeado));
+        if(data.login == 1){
+          $state.go('tabs.home'); 
+        }
+        else{
 
-  $scope.signIn = function(user) {
+        }
+    })
+    .error(function(data) {
+      console.log('Error en autologeo: '+ data);
+    });
+  }else{
+   
+  }
+
+ 
+ $scope.signIn = function(user) {
        $scope.authenticarUsuario(user);
   };
+ 
+
   
   $scope.authenticarUsuario = function(user){
+    $scope.loggedIn = 'si';
     $http.post('http://192.168.1.68:3000/login',{nombre:user.username,pass:user.password})
     .success(function(data) {
       $scope.logeado = data;
-        console.log(JSON.stringify($scope.logeado));
+        console.log("se logeo?: "+JSON.stringify($scope.logeado));
         if(data.login == 1){
-          return true;
+          $state.go('tabs.home');
         }
         else{
-          return false;
+         
         }
     })
     .error(function(data) {
@@ -97,19 +129,28 @@ angular.module('ionicApp', ['ionic'])
   }
 
   $scope.persist = function(user){
-    
-
-  window.localStorage.setItem('nombre', user.username);
+    window.localStorage.setItem('nombre', user.username);
     window.localStorage.setItem('pass',user.password);
-    
-    var nombre = window.localStorage.getItem('nombre');
-    var pass = window.localStorage.getItem('pass');
-
   }
 
- 
+})
+
+.controller('tabsController',function($scope,$state){
+  $scope.salir = function(user){
+    window.localStorage.removeItem("nombre");
+    window.localStorage.removeItem("pass");
+    $state.go('signin'); 
+  }
+})
+
+.controller('registrarseCtrl',function($scope,$state){
+  $scope.registrarse = function(user){
+    alert('hola'+user.email);
+    
+  }
 })
 
 .controller('HomeTabCtrl', function($scope) {
   console.log('HomeTabCtrl');
+  
 });

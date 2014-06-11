@@ -12,6 +12,8 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -48,21 +50,20 @@
             </button>
             
             <ion-checkbox  ng-model="user.forget" ng-checked="user.forget" ng-change="persist(user)">no olvidar</ion-checkbox>
-            
             </br>
             <p class="text-center">
-              <a href="#/forgot-password">Forgot password</a>
+              <a href="#/registrarse">Registrarse</a>
             </p>
+            <p class="text-center">
+              <a href="#/forgot-password">Olvide contraseña</a>
+            </p>
+
             <p class="text-center">
               <p>{{user.username}}</p>
               <p>{{user.password}}</p>
               <p>{{user.forget}}</p>
               <p>
-                <script>
-                     var nombre = window.localStorage.getItem('nombre');
-                     alert(nombre);
-                </script>
-              </p>
+            </p>
 
             </p>
           </div>
@@ -70,20 +71,68 @@
       </ion-view>
     </script>
 
+    <script id="registrarse.html" type="text/ng-template">
+      <ion-view title="registrarse">
+        <ion-content padding="true">
+          <form class="list padding" name="signupform">
+
+         <label class="item item-input item-stacked-label">
+
+           <span class="input-label">Email</span>
+           <input type="email"
+            ng-model="user.email"
+            required
+            placeholder="Email..."/>
+
+         </label>      
+
+         <label class="item item-input item-stacked-label">
+
+           <span class="input-label">Contraseña</span>
+           <input type="password"
+            ng-model="user.password"
+            ng-minlegth='4'
+            required
+            placeholder="Contraseña..."/>
+
+         </label>      
+
+
+         <label class="item item-input item-stacked-label">
+
+           <span class="input-label">Confirmar contraseña</span>
+           <input type="password"
+            ng-model="user.password2"
+            ng-minlegth='4'
+            required
+            ng-enter="registrarse()"
+            placeholder="Confirmar contraseña..."/>
+
+         </label>      
+
+         
+         <div >
+           <button class="button button-block button-dark"
+            
+             data-ng-click="registrarse(user)">
+       Registrarse
+           </button>
+           
+         </div>    
+       
+     </form>
+
+        </ion-content>
+      </ion-view>
+    </script>
+
     <script id="forgot-password.html" type="text/ng-template">
-      <ion-view title="Forgot Password">
+      <ion-view title="Olvide mi contraseña... otra vez!">
         <ion-content padding="true">
           <p>
-            Yeah this is just a demo showing how views can be shown without tabs, then you can navigate
-            to views within tabs. Additionally, only one set of tabs needs to be written for all of the different views that should go inside the tabs. (Compared to written the same tab links in the footer of every view that's in a tab.)
+            como recupear contraseña
           </p>
-          <p>
-            There's no username/password, just click
-            the Sign-In button back a the sign-in view.
-          </p>
-          <p>
-            Return to <a href="#/sign-in">Sign-In</a>.
-          </p>
+          
         </ion-content>
       </ion-view>
     </script>
@@ -99,7 +148,7 @@
           <ion-nav-view name="about-tab"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Sign-Out" icon="ion-log-out" href="#/sign-in">
+        <ion-tab title="Sign-Out" icon="ion-log-out" href="#/sign-in" ng-click="salir()">
         </ion-tab>
 
       </ion-tabs>
@@ -124,7 +173,7 @@
           <p>Banging your head against a wall uses 150 calories an hour.</p>
           <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
           <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its right side when intoxicated.</p>
-          <p>A cockroach will live nine days without it's head, before it starves to death.</p>
+          <p>A cockroach will live nine days without its head, before it starves to death.</p>
           <p>Polar bears are left handed.</p>
           <p>
             <a class="button icon ion-home" href="#/tab/home"> Home</a>
@@ -142,7 +191,7 @@
           <p>11% of the world is left-handed.</p>
           <p>1 in 8 Americans has worked at a McDonalds restaurant.</p>
           <p>$283,200 is the absolute highest amount of money you can win on Jeopardy.</p>
-          <p>101 Dalmatians, Peter Pan, Lady and the Tramp, and Mulan are the only Disney cartoons where both parents are present and don't die throughout the movie.</p>
+          <p>101 Dalmatians, Peter Pan, Lady and the Tramp, and Mulan are the only Disney cartoons where both parents are present and dont die throughout the movie.</p>
           <p>
             <a class="button icon ion-home" href="#/tab/home"> Home</a>
             <a class="button icon ion-chevron-left" href="#/tab/facts"> Scientific Facts</a>
