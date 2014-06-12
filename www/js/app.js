@@ -103,8 +103,9 @@ angular.module('ionicApp', ['ionic'])
    
   }
 
+
  
- $scope.signIn = function(user) {
+  $scope.signIn = function(user) {
        $scope.authenticarUsuario(user);
   };
  
@@ -120,7 +121,7 @@ angular.module('ionicApp', ['ionic'])
           $state.go('tabs.home');
         }
         else{
-         
+          alert('usuario y/o contraseña no coinciden');
         }
     })
     .error(function(data) {
@@ -143,11 +144,45 @@ angular.module('ionicApp', ['ionic'])
   }
 })
 
-.controller('registrarseCtrl',function($scope,$state){
-  $scope.registrarse = function(user){
-    alert('hola'+user.email);
-    
+.controller('registrarseCtrl',function($scope,$state,$http){
+  var regId = window.localStorage.getItem('regId');
+  
+  $scope.confirmarDuplicados = function(user){
+    $scope.email = JSON.stringify({'email':user.email});
+    $http.post('http://192.168.1.68:3000/confirmarDuplicados',$scope.email)
+    .success(function(data){
+      if(data.duplicado == 1){
+        alert('este correo esta siendo utilizado');
+      } else {
+        alert('welcome');
+      }
+    })
+    .error(function(data){
+      console.log('Error al confirmar duplicidad de usuario registrado: '+data);
+    });
   }
+
+  $scope.registrarse = function(user){
+    $scope.userData = JSON.stringify( {'nombre':user.nombre, 'email':user.email,'pass':user.password, 'confirm':user.confirmacion, 'regId': regId} );
+    
+    $http.post('http://192.168.1.68:3000/signUp',$scope.userData)
+    .success(function(data) {
+      $scope.registrado = data;
+        console.log("registrado ?: "+JSON.stringify($scope.registrado));
+        if(data.registro == 1){
+          $state.go('tabs.home');
+        }
+        else{
+         
+        }
+    })
+    .error(function(data) {
+      console.log('Error en el registro: '+ data);
+    });
+
+  }
+
+  
 })
 
 .controller('HomeTabCtrl', function($scope) {
