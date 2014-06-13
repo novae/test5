@@ -61,6 +61,8 @@ c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\cla
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\classes\org\apache\cordova\media\AudioPlayer$STATE.class \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\classes\org\apache\cordova\media\AudioPlayer.class \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\classes\org\apache\cordova\media\FileHelper.class \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager$1.class \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager.class \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\dexedLibs\classes-210390a1349d586e063307883e8fd85a.jar \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\dexedLibs\gcm-9bcace5d2da0f8877039ccc9a73a014e.jar \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\dexedLibs\android-support-v13-780fa0e2b484bc6fcf3dd4946a77e64b.jar \
