@@ -37,23 +37,7 @@
 		
 			function onDeviceReady() {
 
-				navigator.network.isReachable("http://192.168.1.68:3000", reachableCallback, {});
-				
-				function reachableCallback(reachability) {
-			    // There is no consistency on the format of reachability
-			    var networkState = reachability.code || reachability;
-
-			    var states = {};
-			    states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
-			    states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
-			    states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
-
-			    alert('Connection type: ' + states[networkState]);
-				}
-
-
-
-				$("#app-status-ul").append('<li>deviceready event received</li>');
+			$("#app-status-ul").append('<li>deviceready event received</li>');
 				
 				document.addEventListener("backbutton", function(e){
 					$("#app-status-ul").append('<li>backbutton event received</li>');
