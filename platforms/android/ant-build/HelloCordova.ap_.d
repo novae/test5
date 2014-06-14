@@ -117,6 +117,7 @@ c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\pl
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.device \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.file \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.media \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\com.phonegap.plugins.PushPlugin\www \
@@ -146,4 +147,7 @@ c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\pl
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.media\www \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.media\www\Media.js \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.media\www\MediaError.js \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www\Connection.js \
+c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www\network.js \
 c:\Users\SourCodeT\Desktop\mobile_projects\test5\platforms\android\ant-build\AndroidManifest.xml \

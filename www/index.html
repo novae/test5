@@ -30,17 +30,14 @@
 		<script type="text/javascript" src="PushNotification.js"></script>
 				
 		<script type="text/javascript">
-			
 			var pushNotification;
-
 			
-		
 			function onDeviceReady() {
-
+				$("#app-status-ul").append('<li>deviceready event received</li>');
 				
-			$("#app-status-ul").append('<li>deviceready event received</li>');
+				checkConnection();
 				
-				document.addEventListener("backbutton", function(e){
+			 document.addEventListener("backbutton", function(e){
 					$("#app-status-ul").append('<li>backbutton event received</li>');
 					if( $("#home").length > 0){
 						// call this to get a new token each time. don't call it to reuse existing token.
@@ -66,8 +63,40 @@
 					txt+="Error description: " + err.message + "\n\n"; 
 					alert(txt); 
 				} 
+			} //onDeviceReady
+
+			
+	    function checkConnection() {
+	        var networkState = navigator.connection.type;
+
+	        var states = {};
+	        states[Connection.UNKNOWN]  = 'Unknown connection';
+	        states[Connection.ETHERNET] = 'Ethernet connection';
+	        states[Connection.WIFI]     = 'WiFi connection';
+	        states[Connection.CELL_2G]  = 'Cell 2G connection';
+	        states[Connection.CELL_3G]  = 'Cell 3G connection';
+	        states[Connection.CELL_4G]  = 'Cell 4G connection';
+	        states[Connection.NONE]     = 'No network connection';
+
+	        alert('Connection type: ' + states[networkState]);
+	    }
+
+	    
+
+	    document.addEventListener("offline", onOffline, false);
+
+			function onOffline() {
+			    alert('offline');
 			}
-		
+
+			document.addEventListener("online", onOnline, false);
+
+			function onOnline() {
+			    alert('online');
+			}
+
+			
+
 			// handle APNS notifications for iOS
 			function onNotificationAPN(e) {
 					if (e.alert) {
@@ -151,9 +180,10 @@
 			
 			function errorHandler (error) {
 					$("#app-status-ul").append('<li>error:'+ error +'</li>');
-			}
+			}	
 			
 			document.addEventListener('deviceready', onDeviceReady, true);
+			
 		
 		</script>
 
@@ -196,9 +226,6 @@
 							<a href="#/forgot-password">Olvide contraseña</a>
 						</p>
 
-						<div id="conectionType">
-				    	<p></p>
-				    </div>
 
 						<p class="text-center">
 							<p>{{user.username}}</p>
@@ -385,9 +412,3 @@
     </script>
 
 </html>
-
-
- platforms/android/ant-build/classes/org/apache/cordova/networkinformation/
- platforms/android/assets/www/plugins/org.apache.cordova.network-information/
- platforms/android/src/org/apache/cordova/networkinformation/
- plugins/org.apache.cordova.network-information/

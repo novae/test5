@@ -39,4 +39,8 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+        <param name="android-package" value="org.apache.cordova.NetworkManager" />
+    </feature>
 </widget>
